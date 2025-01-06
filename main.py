@@ -1,6 +1,13 @@
 ## Integrate HTML with Flask
 ## create url dynamically
 
+## Jinja2 template engine
+'''
+{%...%} for for statements
+{{   }} expression to print output
+{{#...#}} for comments
+'''
+
 from flask import Flask, redirect, url_for, render_template, request
 
 #initiate flask ( create the WSGI app)
@@ -12,13 +19,15 @@ def welcome():
     return render_template('index_main.html')
 @app.route('/success/<int:score>')
 def success(score):
-    res = ''
+    res= ''
     if score >= 50:
         res = 'PASS'
     else:
-        res = 'FAIL'
+        res = 'fail'
+    
+    exp = {'score':score, 'res':res}
         
-    return render_template('result.html', result = res)
+    return render_template('result.html', result = exp)
 @app.route('/fail/<int:score>')
 def fail(score):
     return 'The person has failed and the marks is: ' + str(score)
