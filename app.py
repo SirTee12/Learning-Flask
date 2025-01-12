@@ -8,11 +8,7 @@ app = Flask(__name__) # WSGI App that will be communicating with server
 def welcome():
     return "Welcome to the city of Los Angeles: The city of the warriors"
 
-@app.route('/members')
-def member():
-    return 'what are you doing today New Yorkers!!!'
-
 # to automatically append changes to the wabsite without needing to run the file
 #again set debug = True
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host = '0.0.0.0', port = 5000)
